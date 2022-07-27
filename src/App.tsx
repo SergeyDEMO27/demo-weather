@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "./hooks/redux";
+import { fetchSuggest } from "./store/reducers/ActionCreators";
+import "./App.css";
 
 function App() {
+  const dispatch = useAppDispatch();
+  const { error, isLoading, suggestions } = useAppSelector(
+    (state) => state.suggestReducer
+  );
+
+  useEffect(() => {
+    dispatch(fetchSuggest());
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1>WORKS</h1>
+      {suggestions.map(({ id, city, county, country }) => {
+        return (
+          <h1 key={id}>
+            {city}, {county}, {country}
+          </h1>
+        );
+      })}
     </div>
   );
 }
