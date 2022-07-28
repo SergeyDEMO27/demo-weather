@@ -18,7 +18,7 @@ export const suggestParser = ({
     acc = [
       ...acc,
       {
-        id: locationId,
+        id: address.city,
         city: address.city,
         county: address.county,
         country: address.country,
