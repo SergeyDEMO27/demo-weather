@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ISuggest } from "../../models/ISuggest";
+import { fetchSuggest } from "./ActionCreators";
 
 interface SuggestState {
   suggestions: ISuggest[];
@@ -17,15 +18,32 @@ export const suggestSlice = createSlice({
   name: "suggest",
   initialState,
   reducers: {
-    suggestFetching(state) {
+    // suggestFetching(state) {
+    //   state.isLoading = true;
+    // },
+    // suggestFetchingSuccess(state, action: PayloadAction<ISuggest[]>) {
+    //   state.isLoading = false;
+    //   state.error = "";
+    //   state.suggestions = action.payload;
+    // },
+    // suggestFetchingError(state, action: PayloadAction<string>) {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
+  },
+  extraReducers: {
+    [fetchSuggest.pending.type]: (state) => {
       state.isLoading = true;
     },
-    suggestFetchingSuccess(state, action: PayloadAction<ISuggest[]>) {
+    [fetchSuggest.fulfilled.type]: (
+      state,
+      action: PayloadAction<ISuggest[]>
+    ) => {
       state.isLoading = false;
       state.error = "";
       state.suggestions = action.payload;
     },
-    suggestFetchingError(state, action: PayloadAction<string>) {
+    [fetchSuggest.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
     },
