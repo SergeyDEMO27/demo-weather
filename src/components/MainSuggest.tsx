@@ -5,12 +5,11 @@ import { fetchSuggest, fetchWeather } from "../store/reducers/ActionCreators";
 
 const MainSuggest: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { error, isLoading, suggestions } = useAppSelector(
-    (state) => state.suggestReducer
-  );
+  const { suggestions } = useAppSelector((state) => state.suggestReducer);
 
   const getWeather = (id: string) => (e: React.MouseEvent) => {
     dispatch(fetchWeather(id));
+    dispatch(fetchSuggest(""));
   };
 
   return (

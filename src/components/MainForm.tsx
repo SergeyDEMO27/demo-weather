@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import _ from "lodash";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { fetchSuggest, fetchWeather } from "../store/reducers/ActionCreators";
+import { useAppDispatch } from "../hooks/redux";
+import { fetchSuggest } from "../store/reducers/ActionCreators";
 import MainInput from "./UI/MainInput";
 
 const MainForm: React.FC = () => {
@@ -14,7 +14,7 @@ const MainForm: React.FC = () => {
   };
 
   const debounce = useCallback(
-    _.debounce((data) => dispatch(fetchSuggest(data)), 500),
+    _.debounce((data: string) => dispatch(fetchSuggest(data)), 500),
     []
   );
 

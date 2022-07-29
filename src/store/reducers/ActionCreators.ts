@@ -12,29 +12,12 @@ export interface IResponse {
   suggestions: any[];
 }
 
-// export const fetchSuggest =
-//   (value: string) => async (dispatch: AppDispatch) => {
-//     try {
-//       console.log(value);
-//       dispatch(suggestSlice.actions.suggestFetching());
-//       const response = await axios.get<IResponse>(
-//         `https://autocomplete.geocoder.ls.hereapi.com/6.2/suggest.json?query=${value}&apiKey=Yclju9FXL_oqwM7jvUbPyHpbNQnqSgdDWNR-qg-Rm_E`
-//       );
-//       const parsedResponse = suggestParser(response.data);
-//       dispatch(suggestSlice.actions.suggestFetchingSuccess(parsedResponse));
-//     } catch (e) {
-//       dispatch(
-//         suggestSlice.actions.suggestFetchingError(
-//           "Произошла ошибка при поиске города"
-//         )
-//       );
-//     }
-//   };
-
 export const fetchSuggest = createAsyncThunk(
   "suggest/fetchAll",
   async (value: string) => {
-    console.log(value);
+    if (!value) {
+      return [];
+    }
     const response = await axios.get<IResponse>(
       `https://autocomplete.geocoder.ls.hereapi.com/6.2/suggest.json?query=${value}&apiKey=Yclju9FXL_oqwM7jvUbPyHpbNQnqSgdDWNR-qg-Rm_E`
     );

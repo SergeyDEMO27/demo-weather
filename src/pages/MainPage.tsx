@@ -1,43 +1,21 @@
-import React, { useEffect } from "react";
-import _ from "lodash";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { fetchSuggest, fetchWeather } from "../store/reducers/ActionCreators";
+import React from "react";
+import { useAppSelector } from "../hooks/redux";
 import MainForm from "../components/MainForm";
 import MainSuggest from "../components/MainSuggest";
+import WeatherNow from "../components/WeatherNow";
+import "../styles/MainPage.scss";
 
 const MainPage: React.FC = () => {
-  const dispatch = useAppDispatch();
-  const { error, isLoading, suggestions } = useAppSelector(
-    (state) => state.suggestReducer
+  const { error, isLoading } = useAppSelector((state) => state.suggestReducer);
+  const { error: weatherError, isLoading: weatherIsLoading } = useAppSelector(
+    (state) => state.weatherReducer
   );
-  const {
-    error: weatherError,
-    isLoading: weatherIsLoading,
-    weather,
-  } = useAppSelector((state) => state.weatherReducer);
-  const { currentWeather } = weather;
-
-  //   useEffect(() => {
-  //     dispatch(fetchSuggest());
-  //   }, []);
-
-  const getWeather = (id: string) => (e: React.MouseEvent) => {
-    dispatch(fetchWeather(id));
-  };
 
   return (
-    <div className='App'>
+    <div className='main-page'>
       <MainForm />
       <MainSuggest />
-      {/* <div>
-        <h1>Погода сегодня</h1>
-        <p>
-          Температура - {currentWeather.temp}, Код погоды -{" "}
-          {currentWeather.weatherCode}, Скорость ветра -{" "}
-          {currentWeather.windSpeed}, Направление ветра -{" "}
-          {currentWeather.windDirection}
-        </p>
-      </div> */}
+      <WeatherNow />
     </div>
   );
 };
