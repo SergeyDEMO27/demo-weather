@@ -17,20 +17,7 @@ const initialState: SuggestState = {
 export const suggestSlice = createSlice({
   name: "suggest",
   initialState,
-  reducers: {
-    // suggestFetching(state) {
-    //   state.isLoading = true;
-    // },
-    // suggestFetchingSuccess(state, action: PayloadAction<ISuggest[]>) {
-    //   state.isLoading = false;
-    //   state.error = "";
-    //   state.suggestions = action.payload;
-    // },
-    // suggestFetchingError(state, action: PayloadAction<string>) {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // },
-  },
+  reducers: {},
   extraReducers: {
     [fetchSuggest.pending.type]: (state) => {
       state.isLoading = true;

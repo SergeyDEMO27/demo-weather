@@ -39,20 +39,7 @@ const initialState: WeatherState = {
 export const weatherSlice = createSlice({
   name: "weather",
   initialState,
-  reducers: {
-    // weatherFetching(state) {
-    //   state.isLoading = true;
-    // },
-    // weatherFetchingSuccess(state, action: PayloadAction<IWeather>) {
-    //   state.isLoading = false;
-    //   state.error = "";
-    //   state.weather = action.payload;
-    // },
-    // weatherFetchingError(state, action: PayloadAction<string>) {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // },
-  },
+  reducers: {},
   extraReducers: {
     [fetchWeather.pending.type]: (state) => {
       state.isLoading = true;

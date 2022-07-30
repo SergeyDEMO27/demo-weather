@@ -20,7 +20,7 @@ interface weatherInterface {
     temperature_2m: Array<number>;
     time: Array<string>;
     weathercode: Array<number>;
-    windspeed: Array<number>;
+    windspeed_10m: Array<number>;
   };
 }
 
@@ -45,7 +45,7 @@ export const weatherParser = (data: weatherInterface): IWeather => {
       temperature: data.hourly.temperature_2m,
       time: data.hourly.time,
       weatherCode: data.hourly.weathercode,
-      windSpeed: data.hourly.windspeed,
+      windSpeed: data.hourly.windspeed_10m,
     },
   };
 };

@@ -1,0 +1,5 @@
+.temp-list {
+  @include reset-list;
+  display: flex;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,7 @@
+.main-days {
+  @include reset-list;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 50%;
+}

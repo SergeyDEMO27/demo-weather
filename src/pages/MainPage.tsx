@@ -3,6 +3,8 @@ import { useAppSelector } from "../hooks/redux";
 import MainForm from "../components/MainForm";
 import MainSuggest from "../components/MainSuggest";
 import WeatherNow from "../components/WeatherNow";
+import MainDays from "../components/MainDays";
+import TempList from "../components/TempList";
 import "../styles/MainPage.scss";
 
 const MainPage: React.FC = () => {
@@ -16,6 +18,8 @@ const MainPage: React.FC = () => {
       <MainForm />
       <MainSuggest />
       <WeatherNow />
+      <TempList />
+      <MainDays />
     </div>
   );
 };

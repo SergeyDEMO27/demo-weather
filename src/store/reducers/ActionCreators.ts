@@ -31,7 +31,6 @@ export const fetchWeather = createAsyncThunk(
     const weatherResponse = await axios.get(
       `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longtitude}&hourly=temperature_2m,pressure_msl,precipitation,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_hours&current_weather=true&windspeed_unit=ms&timezone=Europe%2FMoscow&past_days=0`
     );
-    console.log(weatherResponse.data);
     return weatherParser(weatherResponse.data);
   }
 );
