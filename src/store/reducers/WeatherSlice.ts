@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IWeather } from "../../models/IWeather";
+import { fetchWeather } from "./ActionCreators";
 
 interface WeatherState {
   weather: IWeather;
@@ -39,15 +40,29 @@ export const weatherSlice = createSlice({
   name: "weather",
   initialState,
   reducers: {
-    weatherFetching(state) {
+    // weatherFetching(state) {
+    //   state.isLoading = true;
+    // },
+    // weatherFetchingSuccess(state, action: PayloadAction<IWeather>) {
+    //   state.isLoading = false;
+    //   state.error = "";
+    //   state.weather = action.payload;
+    // },
+    // weatherFetchingError(state, action: PayloadAction<string>) {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // },
+  },
+  extraReducers: {
+    [fetchWeather.pending.type]: (state) => {
       state.isLoading = true;
     },
-    weatherFetchingSuccess(state, action: PayloadAction<IWeather>) {
+    [fetchWeather.fulfilled.type]: (state, action: PayloadAction<IWeather>) => {
       state.isLoading = false;
       state.error = "";
       state.weather = action.payload;
     },
-    weatherFetchingError(state, action: PayloadAction<string>) {
+    [fetchWeather.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isLoading = false;
       state.error = action.payload;
     },
