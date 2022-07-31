@@ -21,6 +21,8 @@ const initialState: WeatherState = {
       tempMax: [],
       tempMin: [],
       time: [],
+      sunrise: [],
+      sunset: [],
       weatherCode: [],
     },
     hourlyWeather: {

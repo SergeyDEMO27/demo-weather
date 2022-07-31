@@ -10,6 +10,8 @@ export interface IWeather {
     tempMax: Array<number>;
     tempMin: Array<number>;
     time: Array<string>;
+    sunrise: Array<string>;
+    sunset: Array<string>;
     weatherCode: Array<number>;
   };
   hourlyWeather: {

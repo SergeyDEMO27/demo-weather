@@ -12,6 +12,8 @@ interface weatherInterface {
     temperature_2m_max: Array<number>;
     temperature_2m_min: Array<number>;
     time: Array<string>;
+    sunrise: Array<string>;
+    sunset: Array<string>;
     weathercode: Array<number>;
   };
   hourly: {
@@ -37,6 +39,8 @@ export const weatherParser = (data: weatherInterface): IWeather => {
       tempMax: data.daily.temperature_2m_max,
       tempMin: data.daily.temperature_2m_min,
       time: data.daily.time,
+      sunrise: data.daily.sunrise,
+      sunset: data.daily.sunset,
       weatherCode: data.daily.weathercode,
     },
     hourlyWeather: {

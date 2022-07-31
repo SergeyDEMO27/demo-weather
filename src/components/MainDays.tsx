@@ -4,7 +4,11 @@ import { useAppSelector } from "../hooks/redux";
 import DayItem from "./DayItem";
 import "../styles/MainDays.scss";
 
-const MainDays: React.FC = () => {
+interface MainDaysProps {
+  activeDayHandler: (index: number) => void;
+}
+
+const MainDays: React.FC<MainDaysProps> = ({ activeDayHandler }) => {
   const { weather } = useAppSelector((state) => state.weatherReducer);
   const { dailyWeather } = weather;
 
@@ -12,7 +16,7 @@ const MainDays: React.FC = () => {
     <ul className='main-days'>
       {dailyWeather.time.map((item, index) => {
         return (
-          <li key={_.uniqueId()}>
+          <li key={_.uniqueId()} onClick={() => activeDayHandler(index)}>
             <DayItem
               precipitation={dailyWeather.precipitation[index]}
               tempMax={dailyWeather.tempMax[index]}
